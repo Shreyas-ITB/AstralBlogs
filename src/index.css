@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --blue-glow: 0 0 15px rgba(46, 34, 172, 0.5);
+  --blue-primary: #2e22ac;
+  --blue-light: #3d30c7;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+.star {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.night-bg {
+  background: linear-gradient(135deg, #2e22ac 0%, #000000 25%, #000000 100%);
+}
+
+.illuminate {
+  transition: text-shadow 0.3s ease, transform 0.2s ease;
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.6);
+}
+
+.illuminate:hover {
+  text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white;
+  transform: translateY(-2px);
+}
+
+.search-bar {
+  border: 2px solid var(--blue-primary);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.search-bar:focus-within {
+  box-shadow: var(--blue-glow);
+  border-color: var(--blue-light);
+}
+
+.blog-card {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(46, 34, 172, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--blue-glow);
+  border-color: var(--blue-primary);
+}
+
+.link-card {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(46, 34, 172, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.link-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--blue-glow);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2e22ac;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3d30c7;
+}
+
+footer {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 640px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+  color: white;
+  padding: 12px 24px;
+  text-align: center;
+  z-index: 1000;
+}
+
+@keyframes fade-in-footer {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.animate-fade-in-footer {
+  animation: fade-in-footer 0.8s ease-out forwards;
+}
