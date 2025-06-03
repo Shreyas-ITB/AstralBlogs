@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { BlogPost, SearchResults } from '../types';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'https://astralblogs.onrender.com/api';
 
 // Fetch the most recent 50 posts
 export const fetchPosts = async (): Promise<BlogPost[]> => {
