@@ -36,7 +36,7 @@ const LinkCard: React.FC<LinkCardProps> = ({ url, index }) => {
       }
 
       try {
-        const response = await axios.get(`http://localhost:5000/api/amazon-product?url=${encodeURIComponent(url)}`);
+        const response = await axios.get(`https://astralblogs.onrender.com/api/amazon-product?url=${encodeURIComponent(url)}`);
         productCache[url] = response.data;
         setProductInfo(response.data);
       } catch (error) {
