@@ -28,29 +28,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 // MongoDB Connection
-const {
-  MONGODB_URI,
-  MONGODB_USER,
-  MONGODB_PASSWORD
-} = process.env;
-
-// If username and password are provided, inject them into the URI
-let finalUri = MONGODB_URI;
-
-if (MONGODB_USER && MONGODB_PASSWORD) {
-  // Insert credentials into the URI
-  const uri = new URL(MONGODB_URI);
-  uri.username = encodeURIComponent(MONGODB_USER);
-  uri.password = encodeURIComponent(MONGODB_PASSWORD);
-  finalUri = uri.toString();
-}
-
-mongoose.connect(finalUri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log('MongoDB connected'))
-.catch(err => console.error('MongoDB connection error:', err));
+mongoose.connect(process.env.MONGODB_URI)
+  .then(() => console.log('Connected to MongoDB'))
+  .catch(err => {
+    console.error('MongoDB connection error:', err);
+    process.exit(1);
+  });
 
 // Routes
 app.use('/api', postRoutes);
